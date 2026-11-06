@@ -1,0 +1,19 @@
+<style>
+#kv .kl{border-top:1px solid #223;padding:8px 0}#kv .kr{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+#kv .kr>*{flex:1 1 100px;min-width:0}#kv select{background:#0b1018;color:#e6e9ef;border:1px solid #334;border-radius:6px;padding:8px}
+#kv .kr input[type=checkbox]{flex:0 0 auto;width:auto;margin:0}#kv .kn{flex:2 1 160px;font-size:13px;word-break:break-all}
+#kv pre{background:#0b1018;border-radius:6px;padding:8px;font-size:12px;white-space:pre-wrap;max-height:220px;overflow:auto}
+#kprev{width:100%;background:#080c14;border-radius:6px;margin-top:8px}
+</style>
+<div class="card" id="kv">
+<small>Quelldaten w&auml;hlen: <b>GeoJSON</b> (z.&nbsp;B. Natural Earth 10m), <b>airports.csv</b> (ourairports.com/data), <b>OpenAir-.txt</b> oder die <b>.zip</b> von OpenFlightMaps. Die Umwandlung l&auml;uft komplett im Browser, auch ohne Internet &ndash; nur die Quelldateien m&uuml;ssen vorliegen. Passende Voreinstellungen werden automatisch gesetzt (Anleitung: README.md).</small>
+<input type="file" id="kfiles" multiple accept=".geojson,.json,.csv,.txt,.zip">
+<div id="klayers"></div>
+<div class="kr"><span>BBox <small>(W S O N, leer = alles)</small><input id="kbb" value="5.0 46.8 16.5 55.8"></span>
+<span>Standard-Toleranz <small>(m)</small><input id="ktol" type="number" value="1000" min="0"></span>
+<span>Dateiname<input id="kname" value="karte.vmap"></span></div>
+<button onclick="kConvert()">Konvertieren</button> <button class="s" id="kdl" style="display:none">Herunterladen</button> <button class="s" id="kup" style="display:none">Auf das Ger&auml;t hochladen</button>
+<progress id="kprog" value="0" max="100" style="display:none"></progress>
+<pre id="klog" style="display:none"></pre>
+<canvas id="kprev" width="480" height="480" style="display:none"></canvas>
+</div>
